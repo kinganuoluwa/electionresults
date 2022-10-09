@@ -1,0 +1,6 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>You have been logged out. <a class="text-blue-600 hover:underline hover: text-blue-900" href="{% url 'login' %}">Login again</a></h1>
+{% endblock %}

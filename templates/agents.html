@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="text-gray-600 body-font">
+    <div class="max-w-screen-xl py-5 mx-auto">
+        <div class="mx-4 md:grid md:grid-cols-3">
+            {% for agent in agents %}
+            <div class="">
+                <div class="bg-white flex items-center border-2 rounded-lg border-gray-200 border-opacity-50 p-4">
+                    <div
+                        class="w-16 h-16  inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-gray-900 text-lg title-font font-medium">{{ agent.first_name }} {{ agent.surname }}</h2>
+                        <p class="leading-relaxed text-base">Ward {{ agent.ward_number }}</p>
+                        <a class="text-indigo-500 inline-flex items-center">0{{ agent.phone_number }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
