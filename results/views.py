@@ -18,20 +18,17 @@ def total_result(request):
     pdp_results = PollingUnit.objects.values('pdp')
     accord_results = PollingUnit.objects.values('accord')
 
-    apc_final_result = 0
-    for result in apc_results:
-        results = result.get('apc')
-        apc_final_result += results
+    # final result calculator
+    def final_result(party_results, party_name):
+        party_final_result = 0
+        for result in party_results:
+            results = result.get(party_name)
+            party_final_result += results
+        return party_final_result
 
-    pdp_final_result = 0
-    for result in pdp_results:
-        results = result.get('pdp')
-        pdp_final_result += results
-
-    accord_final_result = 0
-    for result in accord_results:
-        results = result.get('accord')
-        accord_final_result += results
+    apc_final_result = final_result(apc_results, 'apc')
+    pdp_final_result = final_result(pdp_results, 'pdp')
+    accord_final_result = final_result(accord_results, 'accord')
 
     context = {
         'apc_final_result':apc_final_result,
