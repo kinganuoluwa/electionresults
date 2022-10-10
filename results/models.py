@@ -2,11 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
     
 
+class Agent(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number = models.PositiveBigIntegerField()
+
 class Ward(models.Model):
     ward_number = models.PositiveIntegerField()
     name = models.CharField(max_length=30)
     supervisor_first_name = models.CharField(max_length=50)
-    supervisor_phone_number = models.CharField(max_length=50)
+    supervisor_phone_number = models.PositiveBigIntegerField()
     supervisor_last_name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -15,6 +19,7 @@ class Ward(models.Model):
 
 class PollingUnit(models.Model):
     ward = models.ForeignKey(Ward, on_delete=models.CASCADE)
+    agent = models.OneToOneField(Agent, on_delete=models.CASCADE)
     polling_unit_id = models.PositiveIntegerField()
     polling_unit_name = models.CharField(max_length=100)
     apc = models.IntegerField()
