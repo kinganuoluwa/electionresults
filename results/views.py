@@ -33,8 +33,6 @@ def results(request):
     }
     return render(request, 'results.html', context)
 
-class AgentListView(LoginRequiredMixin, ListView):
-    model = Agent
-    template_name = 'agents.html'
-    context_object_name = 'agents'
-    ordering = ['ward_number']
+@login_required
+def polls(request):
+    return render(request, 'polls.html')
