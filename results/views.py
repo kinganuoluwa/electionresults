@@ -12,26 +12,33 @@ from .models import Ward, PollingUnit
     # success_url = 'results'
 
 
-# @login_required
-# def results(request):
-#     apc_results = PollingBooth.objects.values('apc')
-#     pdp_results = PollingBooth.objects.values('pdp')
+@login_required
+def total_result(request):
+    apc_results = PollingUnit.objects.values('apc')
+    pdp_results = PollingUnit.objects.values('pdp')
+    accord_results = PollingUnit.objects.values('accord')
 
-#     apc_final_result = 0
-#     for result in apc_results:
-#         results = result.get('apc')
-#         apc_final_result += results
+    apc_final_result = 0
+    for result in apc_results:
+        results = result.get('apc')
+        apc_final_result += results
 
-#     pdp_final_result = 0
-#     for result in pdp_results:
-#         results = result.get('pdp')
-#         pdp_final_result += results
+    pdp_final_result = 0
+    for result in pdp_results:
+        results = result.get('pdp')
+        pdp_final_result += results
 
-#     context = {
-#         'apc_final_result':apc_final_result,
-#         'pdp_final_result':pdp_final_result
-#     }
-#     return render(request, 'results.html', context)
+    accord_final_result = 0
+    for result in accord_results:
+        results = result.get('accord')
+        accord_final_result += results
+
+    context = {
+        'apc_final_result':apc_final_result,
+        'pdp_final_result':pdp_final_result,
+        'accord_final_result':accord_final_result,
+    }
+    return render(request, 'total_result.html', context)
 
 class WardListView(LoginRequiredMixin, ListView):
     model = Ward
