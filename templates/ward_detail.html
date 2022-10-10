@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container p-6 mx-auto">
+    <a class="underline text-blue-500" href="{% url 'ward_list' %}">Go back</a>
+    <h1>Ward {{ ward.ward_number }} - {{ ward.name }}</h1>
+    <h2>Supervisor Name: {{ ward.supervisor_first_name }} {{ ward.supervisor_last_name }}</h2>
+    <p>Supervisor Phone Number: 0{{ ward.supervisor_phone_number }}</p>
+
+    <div id="" class="">
+        <div class="p-5 font-light border border-t-0 border-gray-200">
+            <main class="flex-1 overflow-x-auto relative">
+                <table class="w-full text-sm text-left text-gray-500 uppercase">
+                    <thead class="text-xs text-gray-700  bg-gray-50">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">
+                                POLLING UNIT ID
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                POLLING UNIT NAME
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                AGENT NAME
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                AGENT PHONE NUMBER
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                APC
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                PDP
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                ACCORD
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                REMARK
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for polling_unit in polling_units %}
+                        <tr class="bg-white border-b">
+                            <th scope="row" class="py-4 px-6">
+                                {{ polling_unit.polling_unit_id }}
+                            </th>
+                            <td class="py-4 px-6">
+                                {{ polling_unit.polling_unit_name }}
+                            </td>
+                            <td class="py-4 px-6">
+                                Unknown
+                            </td>
+                            <td class="py-4 px-6">
+                                Unknown
+                            </td>
+                            <td class="py-4 px-6">
+                                {{ polling_unit.apc }}
+                            </td>
+                            <td class="py-4 px-6">
+                                {{ polling_unit.pdp }}
+                            </td>
+                            <td class="py-4 px-6">
+                                {{ polling_unit.accord }}
+                            </td>
+                            <td class="py-4 px-6">
+                                {{ polling_unit.remarks }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </main>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

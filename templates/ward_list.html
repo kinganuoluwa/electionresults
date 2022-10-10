@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="container p-6 mx-auto">
+    <div>
+        {% for ward in wards %}
+        <h2 class="block m-6 p-5 font-medium text-left text-gray-900 border border-gray-400"><a href="{% url 'ward_detail' ward.pk %}">Ward {{ ward.ward_number }} - {{ ward.name }}</a></h2>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
