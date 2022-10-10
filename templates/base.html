@@ -18,10 +18,10 @@
     <header>
         <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                <a href="#" class="flex items-center">
-                    <img src="{% static 'img/pdp-logo.png' %}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                    <span class="self-center text-xl font-semibold whitespace-nowrap">PDP</span>
-                </a>
+                <div class="flex items-center">
+                    <img src="{% static 'img/pdp-logo.png' %}" class="mr-3 h-6 sm:h-9"/>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap">ElectionResults</span>
+                </div>
                 <div class="flex items-center lg:order-2">
                     <a href="{% url 'logout' %}"
                         class="text-blue-600 hover:text-blue-900 font-medium rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 underline">Logout</a>
