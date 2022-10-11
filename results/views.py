@@ -9,7 +9,7 @@ class ResultCreateView(LoginRequiredMixin, CreateView):
     model = Result
     fields = ['polling_booth', 'apc', 'pdp', 'accord', 'remarks']
     template_name = 'add_result.html'
-    success_url = 'results/total'
+    success_url = 'results:total_result'
 
 
 @login_required
