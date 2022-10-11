@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
-from .models import Ward, PollingUnit
+from .models import PollingBooth, Result, Ward
 
 
 # class ResultCreateView(LoginRequiredMixin, CreateView):
@@ -14,9 +14,9 @@ from .models import Ward, PollingUnit
 
 @login_required
 def total_result(request):
-    apc_results = PollingUnit.objects.values('apc')
-    pdp_results = PollingUnit.objects.values('pdp')
-    accord_results = PollingUnit.objects.values('accord')
+    apc_results = Result.objects.values('apc')
+    pdp_results = Result.objects.values('pdp')
+    accord_results = Result.objects.values('accord')
 
     # final result calculator
     def final_result(party_results, party_name):
@@ -45,5 +45,5 @@ class WardListView(LoginRequiredMixin, ListView):
 @login_required
 def ward_detail(request, pk):
     ward = Ward.objects.get(id=pk)
-    polling_units = PollingUnit.objects.filter(ward=ward)
+    polling_units = PollingBooth.objects.filter(ward=ward)
     return render(request, 'ward_detail.html', {'ward':ward, 'polling_units':polling_units})
