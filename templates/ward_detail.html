@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="container p-6 mx-auto">
-    <a class="underline text-blue-500" href="{% url 'ward_list' %}">Go back</a>
+    <a class="underline text-blue-500" href="{% url 'results:ward_list' %}">Go back</a>
     <h1>Ward {{ ward.ward_number }} - {{ ward.name }}</h1>
     <h2>Supervisor Name: {{ ward.supervisor_first_name }} {{ ward.supervisor_last_name }}</h2>
     <p>Supervisor Phone Number: 0{{ ward.supervisor_phone_number }}</p>
