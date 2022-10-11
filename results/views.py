@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 from .models import PollingBooth, Result, Ward
 
 
-# class ResultCreateView(LoginRequiredMixin, CreateView):
-    # model = PollingBooth
-    # fields = ['ward', 'polling_unit', 'apc', 'pdp', 'accord', 'remarks']
-    # template_name = 'add-results.html'
-    # success_url = 'results'
+class ResultCreateView(LoginRequiredMixin, CreateView):
+    model = Result
+    fields = ['polling_booth', 'apc', 'pdp', 'accord', 'remarks']
+    template_name = 'add_result.html'
+    success_url = 'results/total'
 
 
 @login_required

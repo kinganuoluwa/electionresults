@@ -26,7 +26,7 @@ class PollingBooth(models.Model):
     polling_unit_name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'Ward {self.ward.ward_number}-00{self.polling_unit_id} {self.ward.name}'
+        return f'Ward {self.ward.ward_number}-00{self.polling_unit_id}'
 
 class Result(models.Model):
     polling_booth = models.OneToOneField(PollingBooth, on_delete=models.CASCADE)
