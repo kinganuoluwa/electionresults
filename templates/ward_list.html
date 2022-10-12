@@ -1,11 +1,38 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
+
 {% block content %}
-<section class="container p-6 mx-auto">
+<section class="bg-white">
+  <div class="container mx-auto p-6">
     <div>
-        {% for ward in wards %}
-        <h2 class="block m-6 p-5 font-medium text-left text-gray-900 border border-gray-400"><a href="{% url 'results:ward_detail' ward.pk %}">Ward {{ ward.ward_number }} - {{ ward.name }}</a></h2>
-        {% endfor %}
+      <main class="md:w-5/6 mx-auto flex item-center justify-center overflow-x-auto relative">
+        <table
+          class="w-full text-sm font-semibold text-left text-orange-700 uppercase"
+        >
+          <thead class="text-xs text-white bg-orange-900">
+            <tr>
+              <th scope="col" class="py-3 px-6">Ward</th>
+              <th scope="col" class="py-3 px-6">NAME</th>
+              <th scope="col" class="py-3 px-6">Supervisor NAME</th>
+              <th scope="col" class="py-3 px-6">Supervisor PHONE NUMBER</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for ward in wards %}
+            <tr class="bg-white border-b">
+              <td class="py-4 px-6">Ward {{ ward.ward_number }}</td>
+              <td class="py-4 px-6">{{ ward.name }}</td>
+              <td class="py-4 px-6">
+                {{ ward.supervisor_first_name }} {{ ward.supervisor_last_name}}
+              </td>
+              <td class="py-4 px-6">{{ ward.supervisor_phone_number }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </main>
     </div>
+  </div>
 </section>
 {% endblock %}

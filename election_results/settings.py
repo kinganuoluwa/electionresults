@@ -108,10 +108,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# login 
-LOGIN_REDIRECT_URL = 'results:total_result'
-LOGIN_URL = 'result:login'
-
 # Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"

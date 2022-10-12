@@ -1,29 +1,90 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
 
-<section class="w-full bg-white border shadow-md">
-    <div class="w-5/6 mx-auto bg-white rounded-lg md:p-8">
-        <div class="grid md:grid-cols-4 grid-cols-2 p-4 text-gray-900">
-            <div class="flex flex-col justify-center items-center">
-                <div class="flex flex-col items-center justify-center">
-                    <img src="{% static 'img/apc-logo.png' %}" class="mr-3 w-20 h-auto" alt="APC Logo" />
-                    <span class="mb-2 text-3xl font-extrabold">{{apc_final_result}}</span>
-                </div>
-            </div>
-            <div class="flex flex-col justify-center items-center">
-                <div class="flex flex-col items-center justify-center">
-                    <img src="{% static 'img/pdp-logo.png' %}" class="mr-3 w-20 h-auto" alt="APC Logo" />
-                    <span class="mb-2 text-3xl font-extrabold">{{pdp_final_result}}</span>
-                </div>
-            </div>
-            <div class="flex flex-col justify-center items-center">
-                <div class="flex flex-col items-center justify-center">
-                    <img src="{% static 'img/pdp-logo.png' %}" class="mr-3 w-20 h-auto" alt="APC Logo" />
-                    <span class="mb-2 text-3xl font-extrabold">{{accord_final_result}}</span>
-                </div>
-            </div>
+{% block content %}
+<section class="w-full">
+  <div class="w-5/6 mx-auto rounded-lg md:p-8">
+    <div class="grid grid-cols-3 p-4 text-gray-900">
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="{% static 'img/apc-logo.png' %}"
+            class="mr-3 w-20 h-auto"
+            alt="APC Logo"
+          />
+          <span class="mb-2 text-3xl font-extrabold">{{apc_final_result}}</span>
         </div>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="{% static 'img/pdp-logo.png' %}"
+            class="mr-3 w-20 h-auto"
+            alt="APC Logo"
+          />
+          <span class="mb-2 text-3xl font-extrabold">{{pdp_final_result}}</span>
+        </div>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center justify-center">
+          <img
+            src="{% static 'img/pdp-logo.png' %}"
+            class="mr-3 w-20 h-auto"
+            alt="APC Logo"
+          />
+          <span class="mb-2 text-3xl font-extrabold"
+            >{{accord_final_result}}</span
+          >
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container mx-auto px-6">
+    <div>
+      <main class="flex-1 overflow-x-auto relative">
+        <table
+          class="w-full text-sm font-semibold text-left text-orange-700 uppercase"
+        >
+          <thead class="text-xs text-white bg-orange-900">
+            <tr>
+              <th scope="col" class="py-3 px-6">Ward</th>
+              <th scope="col" class="py-3 px-6">POLLING UNIT NAME</th>
+              <th scope="col" class="py-3 px-6">AGENT NAME</th>
+              <th scope="col" class="py-3 px-6">AGENT PHONE NUMBER</th>
+              <th scope="col" class="py-3 px-6">APC</th>
+              <th scope="col" class="py-3 px-6">PDP</th>
+              <th scope="col" class="py-3 px-6">ACCORD</th>
+              <th scope="col" class="py-3 px-6">REMARK</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for result in results %}
+            <tr class="bg-white border-b">
+              <td class="py-4 px-6">
+                Ward {{ result.polling_unit.ward.ward_number }}
+              </td>
+              <td class="py-4 px-6">{{ result.polling_unit.name }}</td>
+              <td class="py-4 px-6">
+                {{ result.polling_unit.agent_first_name }} 
+                {{ result.polling_unit.agent_last_name }}
+              </td>
+              <td class="py-4 px-6">
+                {{ result.polling_unit.agent_phone_number }}
+              </td>
+              <td class="py-4 px-6">{{ result.apc }}</td>
+              <td class="py-4 px-6">{{ result.pdp }}</td>
+              <td class="py-4 px-6">{{ result.accord }}</td>
+              <td class="py-4 px-6 lowercase">{{ result.remarks }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
 </section>
 {% endblock %}
