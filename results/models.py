@@ -22,7 +22,7 @@ class PollingUnit(models.Model):
         return f'{self.name}'
 
 class Result(models.Model):
-    polling_unit = models.OneToOneField(PollingUnit, on_delete=models.CASCADE)
+    polling_unit = models.OneToOneField(PollingUnit, on_delete=models.CASCADE, editable=False)
     apc = models.IntegerField(default=0)
     pdp = models.IntegerField(default=0)
     accord = models.IntegerField(default=0)

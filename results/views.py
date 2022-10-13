@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from .models import Result, Ward
+from .forms import ResultForm
 
 
 def total_result(request):
@@ -33,3 +34,14 @@ class WardListView(ListView):
     model = Ward
     context_object_name = 'wards'
     template_name = 'ward_list.html'
+
+def add_result(request, id):
+    result = Result.objects.get(id=id)
+    if request.method == 'POST':
+        form = ResultForm(request.POST, instance=result)
+        if form.is_valid():
+            form.save()
+            return redirect('results:total_result')
+    else:
+        form = ResultForm(instance=result)
+    return render(request, 'add_result.html', {'form':form})

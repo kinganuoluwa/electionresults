@@ -20,7 +20,7 @@
           <img
             src="{% static 'img/pdp-logo.png' %}"
             class="mr-3 w-20 h-auto"
-            alt="APC Logo"
+            alt="PDP Logo"
           />
           <span class="mb-2 text-3xl font-extrabold">{{pdp_final_result}}</span>
         </div>
@@ -28,9 +28,9 @@
       <div class="flex flex-col justify-center items-center">
         <div class="flex flex-col items-center justify-center">
           <img
-            src="{% static 'img/pdp-logo.png' %}"
+            src="{% static 'img/accord-logo.jpg' %}"
             class="mr-3 w-20 h-auto"
-            alt="APC Logo"
+            alt="Accord logo"
           />
           <span class="mb-2 text-3xl font-extrabold"
             >{{accord_final_result}}</span
@@ -58,6 +58,7 @@
               <th scope="col" class="py-3 px-6">PDP</th>
               <th scope="col" class="py-3 px-6">ACCORD</th>
               <th scope="col" class="py-3 px-6">REMARK</th>
+              <th scope="col" class="py-3 px-6">Add Result</th>
             </tr>
           </thead>
 
@@ -79,6 +80,7 @@
               <td class="py-4 px-6">{{ result.pdp }}</td>
               <td class="py-4 px-6">{{ result.accord }}</td>
               <td class="py-4 px-6 lowercase">{{ result.remarks }}</td>
+              <td class="py-4 px-6 lowercase"><a href="{% url 'results:add_results' result.id %}">add result</a></td>
             </tr>
             {% endfor %}
           </tbody>
