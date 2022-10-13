@@ -51,6 +51,7 @@
           <thead class="text-xs text-white bg-orange-900">
             <tr>
               <th scope="col" class="py-3 px-6">Ward</th>
+              <th scope="col" class="py-3 px-6">POLLING UNIT ID</th>
               <th scope="col" class="py-3 px-6">POLLING UNIT NAME</th>
               <th scope="col" class="py-3 px-6">AGENT NAME</th>
               <th scope="col" class="py-3 px-6">AGENT PHONE NUMBER</th>
@@ -68,6 +69,7 @@
               <td class="py-4 px-6">
                 Ward {{ result.polling_unit.ward.ward_number }}
               </td>
+              <td class="py-4 px-6">{{ result.polling_unit.polling_id }}</td>
               <td class="py-4 px-6">{{ result.polling_unit.name }}</td>
               <td class="py-4 px-6">
                 {{ result.polling_unit.agent_first_name }} 
